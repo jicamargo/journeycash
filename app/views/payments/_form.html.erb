@@ -2,12 +2,17 @@
   <% if payment.errors.any? %>
     <div style="color: red">
       <h2>Payment could not be saved, please fill in all fields</h2>
+      <ul>
+        <% payment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
     </div>
   <% end %>
 
   <div class="field">
     <%= form.label "Group" %>
-    <%= form.select :group_id, options_for_select(Group.order(:name).pluck(:name, :id), params[:group_id]), include_blank: 'Select a Group' %>
+    <%= form.select :group_id, options_for_select(Group.order(:name).pluck(:name, :id), 
+        payment.group_id), include_blank: 'Select a Group' %>
 
   </div>
 
@@ -15,18 +20,18 @@
   <div class="field">
     <%= form.label "Label" %>
     <%= form.select :label_id, options_for_select(Label.order(:name).pluck(:name, :id),
-        params[:label_id]), { include_blank: 'Select a label' },
+        payment.label_id), { include_blank: 'Select a label' },
         { data: { new_option: true }, id: 'label_id_select' } %>  
   </div>
 
-  <div id='new_label' class="field" style="display: none">
+  <div id='new_label' class="field" style="display: none" >
     <%= form.label :new_label, 'New label' %>
     <%= form.text_field :new_label %>
   </div>
 
   <div>
     <%= form.label "Amount", style: "display: block" %>
-    <%= form.text_field :amount %>
+    <%= form.text_field :amount, input_html: { type: "number" }, class: "currency-input"  %>
   </div>
 
   <div>

@@ -3,7 +3,8 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.all
+    # get all payments from the current user, from most recent to oldest
+    @payments = Payment.where(group_id: current_user.groups).order(created_at: :desc)
   end
 
   # GET /payments/1 or /payments/1.json
@@ -13,10 +14,6 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @payment = Payment.new
-    # create a list of groups to choose from
-    @groups = Group.all
-    #create a list of labels to choose from
-    @labels = Label.all
   end
 
   # GET /payments/1/edit
@@ -28,28 +25,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     @payment.group_id = params[:payment][:group_id]
     
-    # Verify if select a existing label or create a new one 
-    if params[:payment][:label_id].present?
-      @payment.label_id = params[:payment][:label_id]
-    else
-      new_label_name = params[:payment][:new_label]
-      
-      # Verify if the new label name is not empty
-      if new_label_name.present?
-        # look for a label with the same name
-        new_label_name = new_label_name.capitalize
-        existing_label = Label.find_by(name: new_label_name)
-        
-        if existing_label
-          # if exist a label with the same name, use it
-          @payment.label_id = existing_label.id
-        else
-          # if not exist a label with the same name, create a new one
-          new_label = Label.create(name: new_label_name, user_id: current_user.id)
-          @payment.label_id = new_label.id
-        end
-      end
-    end
+    validate_label
 
     respond_to do |format|
       if @payment.save
@@ -65,6 +41,7 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1 or /payments/1.json
   def update
     respond_to do |format|
+      validate_label
       if @payment.update(payment_params)
         format.html { redirect_to payment_url(@payment), notice: "Payment was successfully updated." }
         format.json { render :show, status: :ok, location: @payment }
@@ -93,6 +70,36 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:label_id, :group_id, :amount)
+      params.require(:payment).permit(:group_id, :amount)
     end
+
+    def validate_label
+      # Verify if select a existing label or create a new one 
+      if params[:payment][:label_id].present? && params[:payment][:label_id] != "#new*" 
+        @payment.label_id = params[:payment][:label_id]
+        puts ">>>>>>>>>>>>>>>>>>>>>>> label_id: #{@payment[:label_id]}"
+      else
+        new_label_name = params[:payment][:new_label]
+        puts ">>>>>>>>>>>>>>>>>>>>>> new_label: #{new_label_name}"
+        
+        # Verify if the new label name is not empty
+        if new_label_name.present?
+          # look for a label with the same name
+          new_label_name = new_label_name.capitalize
+          existing_label = Label.find_by(name: new_label_name)
+          
+          if existing_label
+            # if exist a label with the same name, use it
+            @payment.label_id = existing_label.id
+            puts ">>>>>>>>>>>>>>>>>>>>>>>> existing_label_id: #{existing_label.id}"
+          else
+            # if not exist a label with the same name, create a new one
+            new_label = Label.create(name: new_label_name, user_id: current_user.id)
+            @payment.label_id = new_label.id
+            puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> new_label_id: #{new_label.id}"
+          end
+        end
+      end
+    end
+
 end

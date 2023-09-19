@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   var select = document.querySelector('#label_id_select');
   var newOption = document.createElement("option");
-  newOption.value = "new";
+  newOption.value = "#new*";
   newOption.text = "Create a new one";
 
   select.appendChild(newOption);
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Add change event listener to the select element
   select.addEventListener('change', function() {
-    if (select.value === 'new') {
+    if (select.value === '#new*') {
       newLabelDiv.style.display = 'block'; // Show the div for new label
     } else {
       newLabelDiv.style.display = 'none';  // Hide the div for new label
