@@ -1,0 +1,11 @@
+<%= javascript_include_tag 'customfield' %>
+
+<h1>New payment</h1>
+
+<%= render "form", payment: @payment %>
+
+<br>
+
+<div>
+  <%= link_to "Back to payments", payments_path %>
+</div>
