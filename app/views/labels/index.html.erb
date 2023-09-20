@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Labels</h1>
+
+<div id="labels">
+  <% @labels.each do |label| %>
+    <div class="label-cnt row">
+      <div class="label-name">
+        <%= label.name %>
+      </div>
+      <div class = "label-actions">
+        <%= link_to "Edit", label %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New label", new_label_path %>

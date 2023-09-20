@@ -8,9 +8,9 @@ class GroupsController < ApplicationController
   # Set group
   before_action :set_group, only: %i[ show edit update destroy ]
 
-  # GET /groups or /groups.json
+  # GET /groups of current_user
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   # GET /groups/1 or /groups/1.json

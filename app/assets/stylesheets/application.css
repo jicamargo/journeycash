@@ -15,4 +15,6 @@
  */
 
   /* add payments.css stylesheet to application.css */
-@import "payments";
+  @import "general_styles";
+
+  @import "payments";

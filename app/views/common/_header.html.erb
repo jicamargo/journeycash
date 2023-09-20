@@ -1,0 +1,65 @@
+<div class="navbar">
+  <nav class="navbar-nav">
+    <ul class="navbar-ul">
+      <div class="menu-btn-cnt invert-color">
+        <%= image_tag("menu-icon.svg", class:'menu-btn') %>
+    </ul>
+  </nav>
+</div>
+  
+<div class="overlay">
+</div>
+
+<div class="navbar-menu">
+  <div class="menu-close">
+    <%= image_tag("close-icon.svg", class:'menu-btn invert-color') %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="menu-profile">
+      <%= image_tag("user-icon.svg", class:'menu-img invert-color') %>
+      <%= current_user.name %>
+    </div>
+    <%= link_to '/', :method => :get, class:'navbar-li menu-exit' do %>
+      <%= image_tag("home-icon.svg", class:'nav-icon menu-exit') %> Categories
+    <% end %>
+    <div class="divider"></div>
+    <%= link_to new_payment_path(current_user.id), class:'navbar-li' do %>
+      <%= image_tag("add-payment-icon.svg", class:'nav-icon') %> Add payment
+    <% end %>
+    <div class="divider"></div>
+    <%= link_to new_group_path(current_user.id), class:'navbar-li' do %>
+      <%= image_tag("add-group-icon.svg", class:'nav-icon') %> New category
+    <% end %>
+    <div class="divider"></div>
+    <%= link_to labels_path(current_user.id), class:'navbar-li' do %>
+      <%= image_tag("labels-icon.svg", class:'nav-icon') %> Labels
+    <% end %>
+    <div class="divider"></div>
+    <%= link_to edit_user_registration_path(current_user.id), class:'navbar-li' do %>
+      <%= image_tag("settings-icon.svg", class:'nav-icon') %> Account Settings 
+    <% end %>
+    <div class="divider"></div>
+    <%= link_to custom_destroy_user_session_path, method: :delete, class:'navbar-li menu-exit' do %>
+      <%= image_tag("logout-icon.svg", class:'nav-icon menu-exit') %> Log Out
+    <% end %>
+  <% else  %>
+    <%= link_to new_user_session_path, class:'navbar-li' do %>
+      <%= image_tag("user-icon.svg", class:'nav-icon') %> Sign in 
+    <% end %>
+    <div class="divider"></div>
+    <%= link_to new_user_registration_path, class:'navbar-li' do %>
+      <%= image_tag("new-user-icon.svg", class:'nav-icon') %> Register 
+    <% end %>
+  <% end %>
+</div>
+
+<div class="alerts">
+  <% if notice.present? %>
+    <p class="alerts-text"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="alerts-text"><%= alert %></p>
+  <% end %>
+</div>
+
+
