@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-field-cnt">
-      <%= form.label "Label" %>
+      <p>Label</p>
       <%= form.select :label_id, options_for_select(@labels.pluck(:name, :id),
           payment.label_id), { include_blank: 'Select a label' },
           { data: { new_option: true }, id: 'label_id_select', class: 'form-field-input' } %>  
@@ -26,7 +26,7 @@
     </div>
 
     <div class='form-field-cnt'>
-      <%= form.label "Amount", style: "display: block", class:'form-field-label width-sm' %>
+      <%= form.label :amount, "Amount", style: "display: block", class:'form-field-label width-sm' %>
       <%= form.text_field :amount, input_html: { type: "number" }, class: "currency-input form-field-input"  %>
     </div>
   </div>

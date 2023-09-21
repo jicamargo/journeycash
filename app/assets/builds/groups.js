@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("turbo:load", function() {
   // Obtén la URL actual
   const currentURL = window.location.pathname;
 

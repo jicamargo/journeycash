@@ -33,6 +33,8 @@ class PaymentsController < ApplicationController
 
     validate_label
 
+    authorize! :create, @payment
+
     respond_to do |format|
       if @payment.save
         format.html { redirect_to group_path(@payment.group), notice: 'Payment was successfully created.' }
@@ -48,6 +50,9 @@ class PaymentsController < ApplicationController
   def update
     respond_to do |format|
       validate_label
+
+      authorize! :update, @payment
+
       if @payment.update(payment_params)
         format.html { redirect_to payment_url(@payment), notice: 'Payment was successfully updated.' }
         format.json { render :show, status: :ok, location: @payment }
@@ -60,6 +65,9 @@ class PaymentsController < ApplicationController
 
   # DELETE /payments/1 or /payments/1.json
   def destroy
+
+    authorize! :destroy, @payment
+
     @payment.destroy
 
     respond_to do |format|

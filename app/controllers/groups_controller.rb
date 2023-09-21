@@ -49,6 +49,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.user_id = current_user.id
 
+    authorize! :create, @group
+
     respond_to do |format|
       if @group.save
         format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
@@ -65,6 +67,8 @@ class GroupsController < ApplicationController
     create_icon_names
     @group.user_id = current_user.id
 
+    authorize! :update, @group
+
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to groups_url, notice: 'Group was successfully updated.' }
@@ -78,6 +82,7 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
+    authorize! :destroy, @group
     @group.destroy
 
     respond_to do |format|
