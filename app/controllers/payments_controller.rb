@@ -65,7 +65,6 @@ class PaymentsController < ApplicationController
 
   # DELETE /payments/1 or /payments/1.json
   def destroy
-
     authorize! :destroy, @payment
 
     @payment.destroy

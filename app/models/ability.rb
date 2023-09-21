@@ -6,13 +6,13 @@ class Ability
 
     can :read, Group
     can :manage, Group, user_id: user.id
-    
+
     can :read, Label
     can :manage, Label, user_id: user.id
-    
+
     can :read, Payment
     can :manage, Payment, group: { user_id: user.id }
 
-    can :manage, :all 
+    can :manage, :all
   end
 end

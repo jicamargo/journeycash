@@ -44,7 +44,6 @@ class LabelsController < ApplicationController
 
   # PATCH/PUT /labels/1 or /labels/1.json
   def update
-
     authorize! :update, @label
 
     respond_to do |format|
@@ -60,7 +59,6 @@ class LabelsController < ApplicationController
 
   # DELETE /labels/1 or /labels/1.json
   def destroy
-
     authorize! :destroy, @label
 
     @label.destroy
