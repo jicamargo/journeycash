@@ -13,17 +13,16 @@ RSpec.describe 'New Category', type: :system do
     visit new_group_path
 
     # Fill out the new category form
-    fill_in "Category's name", with: 'New Category' 
-    
+    fill_in "Category's name", with: 'New Category'
+
     click_button 'Save changes'
 
     sleep 1
 
     # Verify the the app returns to the groups page and the new transaction is displayed
     expect(current_path).to eq(groups_path)
-    expect(page).to have_content("New Category")
+    expect(page).to have_content('New Category')
 
     sleep 1
-    
   end
 end

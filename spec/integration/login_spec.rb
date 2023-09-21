@@ -5,7 +5,6 @@ RSpec.describe 'Login', type: :system do
   create_sample_data
 
   describe 'the signin process', type: :feature do
-
     it "signs not me in, because I don't have a valid email" do
       login('wrong@example.com', 'badpassword')
       expect(page).to have_content 'Invalid'

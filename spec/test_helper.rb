@@ -10,7 +10,7 @@ def create_sample_data
   let!(:label) do
     Label.create(
       name: 'Sample Label',
-      user: user
+      user:
     )
   end
 
@@ -18,19 +18,18 @@ def create_sample_data
     Group.create(
       name: 'Sample Group',
       icon: 'cat01.png',
-      user: user
+      user:
     )
   end
 
   let!(:payment) do
     Payment.create(
       amount: 100.0,
-      label: label,
-      group: group
+      label:,
+      group:
     )
   end
 end
-
 
 def login(email, password)
   visit '/users/sign_in'

@@ -16,17 +16,16 @@ RSpec.describe 'New Transaction', type: :system do
     # write "sample label" in the field with id "new_label"
     fill_in 'payment_new_label', with: 'New label'
 
-
     # Fill out the new transaction form
-    fill_in 'Amount', with: 50.0 
+    fill_in 'Amount', with: 50.0
     # select label.name, from: 'Label'
     click_button 'Save transaction'
 
     sleep 1
-    
+
     # Verify the the app returns to the group page and the new transaction is displayed
     expect(current_path).to eq(group_path(group))
-    expect(page).to have_content("50.00")
-    expect(page).to have_content("New label")   
+    expect(page).to have_content('50.00')
+    expect(page).to have_content('New label')
   end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Group, type: :model do
   it 'is valid with valid attributes' do
     user = User.create(name: 'John Doe', email: 'john@example.com', password: 'password')
-    group = Group.new(name: 'Sample Group', icon: 'sample_icon', user: user)
+    group = Group.new(name: 'Sample Group', icon: 'sample_icon', user:)
     expect(group).to be_valid
   end
 

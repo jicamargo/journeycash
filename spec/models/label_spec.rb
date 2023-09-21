@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Label, type: :model do
   it 'is valid with valid attributes' do
     user = User.create(name: 'John Doe', email: 'john@example.com', password: 'password')
-    label = Label.new(name: 'Sample Label', user: user)
+    label = Label.new(name: 'Sample Label', user:)
     expect(label).to be_valid
   end
 
