@@ -102,10 +102,8 @@ class PaymentsController < ApplicationController
     # Verify if select a existing label or create a new one
     if params[:payment][:label_id].present? && params[:payment][:label_id] != '#new*'
       @payment.label_id = params[:payment][:label_id]
-      puts ">>>>>>>>>>>>>>>>>>>>>>> label_id: #{@payment[:label_id]}"
     else
       new_label_name = params[:payment][:new_label]
-      puts ">>>>>>>>>>>>>>>>>>>>>> new_label: #{new_label_name}"
 
       # Verify if the new label name is not empty
       if new_label_name.present?
@@ -116,12 +114,10 @@ class PaymentsController < ApplicationController
         if existing_label
           # if exist a label with the same name, use it
           @payment.label_id = existing_label.id
-          puts ">>>>>>>>>>>>>>>>>>>>>>>> existing_label_id: #{existing_label.id}"
         else
           # if not exist a label with the same name, create a new one
           new_label = Label.create(name: new_label_name, user_id: current_user.id)
           @payment.label_id = new_label.id
-          puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> new_label_id: #{new_label.id}"
         end
       end
     end
