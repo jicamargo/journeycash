@@ -35,7 +35,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--backcolor);
+  background: var(--main-color-dark);
   color: var(--text-color);
 }
 
@@ -454,7 +454,10 @@ body.welcome .logo {
 .wrapper {
   position: relative;
   width: 100%;
+  max-width: 1200px;
   height: 100%;
+  margin: 0 auto;
+  background-color: var(--backcolor);
 }
 
 .data-wrapper {

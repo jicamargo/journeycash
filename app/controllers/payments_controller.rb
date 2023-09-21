@@ -18,6 +18,8 @@ class PaymentsController < ApplicationController
     @payment = Payment.new
     @group = Group.find(params[:group_id])
     @payment.group_id = params[:group_id]
+
+    create_label_names
   end
 
   # GET /payments/1/edit
@@ -25,6 +27,7 @@ class PaymentsController < ApplicationController
 
   # POST /payments or /payments.json
   def create
+    create_label_names
     @payment = Payment.new(payment_params)
     @payment.group_id = params[:payment][:group_id]
 
@@ -74,6 +77,13 @@ class PaymentsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_payment
     @payment = Payment.find(params[:id])
+  end
+
+  def create_label_names
+    @labels = current_user.labels.order(:name).to_a
+    @label = [] if @labels.blank?
+    # add a "create new label" option to the array of labels
+    @labels << { id: '#new*', name: 'Create a new label' }
   end
 
   # Only allow a list of trusted parameters through.

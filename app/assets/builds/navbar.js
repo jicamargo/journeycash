@@ -1,5 +1,4 @@
-// document.addEventListener('DOMContentLoaded', function() {
-  // Find the hamburger button and the dropdown menu
+
   const hamburgerButton = document.querySelector('.menu-btn-cnt');
   const menuDropdown = document.querySelector('.navbar-menu');
   const overlay = document.querySelector('.overlay');
@@ -28,20 +27,5 @@
     menuDropdown.classList.toggle('active');
     overlay.classList.toggle('active');
   });
-// });
 
 
-  // document.querySelector('.menu-btn-cnt').addEventListener('click', (e) => {
-  //     document.querySelector('.overlay').classList.toggle('active');
-  //     document.querySelector('.navbar-menu').classList.toggle('active');
-  //     document.querySelector('.menu-btn-cnt').classList.toggle('btn-on');
-  //     document.querySelector('.menu')
-  //     document.querySelector('.menu-btn').classList.toggle('menu-btn-on');
-  //     });
-  //   document.querySelector('.menu-close').addEventListener('click', (e) => {
-  //     document.querySelector('.overlay').classList.toggle('active');
-  //     document.querySelector('.navbar-menu').classList.toggle('active');
-  //     document.querySelector('.menu-btn-cnt').classList.toggle('btn-on');
-  //     document.querySelector('.menu')
-  //     document.querySelector('.menu-btn').classList.toggle('menu-btn-on');
-  //   });

@@ -32,6 +32,8 @@ class GroupsController < ApplicationController
   def new
     create_icon_names
     @group = Group.new
+    @group.icon = @icon_names[0] # set default icon
+    @selected_icon = @group.icon
   end
 
   # GET /groups/1/edit
@@ -43,12 +45,13 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
+    create_icon_names
     @group = Group.new(group_params)
     @group.user_id = current_user.id
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to group_url(@group), notice: 'Group was successfully created.' }
+        format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -59,9 +62,12 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
+    create_icon_names
+    @group.user_id = current_user.id
+
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to group_url(@group), notice: 'Group was successfully updated.' }
+        format.html { redirect_to groups_url, notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
