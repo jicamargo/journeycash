@@ -15,12 +15,12 @@
 
     <div class="form-field-cnt">
       <%= form.label "Label" %>
-      <%= form.select :label_id, options_for_select(Label.order(:name).pluck(:name, :id),
+      <%= form.select :label_id, options_for_select(@labels.pluck(:name, :id),
           payment.label_id), { include_blank: 'Select a label' },
           { data: { new_option: true }, id: 'label_id_select', class: 'form-field-input' } %>  
     </div>
 
-    <div id='new_label' class="form-field-cnt" style="display: none" >
+    <div id='new_label' class="form-field-cnt" >
       <%= form.label :new_label, 'New label', class:'form-field-label width-sm' %>
       <%= form.text_field :new_label, class: 'form-field-input'  %>
     </div>
