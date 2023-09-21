@@ -210,10 +210,16 @@ body.welcome .logo {
 
 .menu-close {
   display: flex;
+  flex-direction: row;
   cursor: pointer;
+  align-items: center;
+  justify-items: center;
   align-self: flex-start;
+  width: 4rem;
+  height: 4rem;
   margin-left: -15px;
   margin-top: -15px;
+  text-align: center;
 }
 
 .menu-btn-on {
@@ -574,7 +580,7 @@ body.welcome .logo {
 
 .icon-select input[type="radio"]:checked + label {
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .icon-label.selected {

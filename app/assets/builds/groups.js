@@ -1,10 +1,12 @@
-document.addEventListener("turbo:load", function() {
-  // Obtén la URL actual
-  const currentURL = window.location.pathname;
+document.addEventListener('DOMContentLoaded', function() {
 
-  const pattern = /^\/groups\/\d+\/edit$/; // edit group window e.g: /groups/3/edit
-  if (pattern.test(currentURL) || currentURL.includes("/groups/new")) {
-    const selectedIconValue = document.querySelector('#selected-icon').value;
+  /* verify if the user is in the edit group window */
+  const editGroupWindow = document.querySelector('.icon-label');
+  if (editGroupWindow) {
+    // const selectedIconValue = document.querySelector('#selected-icon').value;
+
+    const firstCheckedIconOption = document.querySelector('.icon-option:checked');
+    const selectedIconValue = firstCheckedIconOption ? firstCheckedIconOption.value : null;
     const labels = document.querySelectorAll('.icon-label');
 
     labels.forEach(label => {
@@ -12,24 +14,30 @@ document.addEventListener("turbo:load", function() {
       if (radioButton && radioButton.value === selectedIconValue) {
         label.classList.add('selected');
       }
+
+      // add event listener to each label
+      label.addEventListener('click', function() {
+        if (radioButton) {
+          radioButton.click();
+          selectIcon(radioButton); 
+        }
+      });
     });
   }
 });
 
+
 function selectIcon(radioButton) {
-  // Obtén el valor del radio button seleccionado
   var selectedIcon = radioButton.value;
+  radioButton.checked = true;
   
-  // Obtén el campo oculto y su valor actual
   var selectedIconField = document.getElementById('selected-icon');
   var currentIconValue = selectedIconField.value;
   
-  // Si el radio button seleccionado es el mismo que el valor actual, deselecciónalo
   if (selectedIcon === currentIconValue) {
     radioButton.checked = false;
-    selectedIconField.value = ''; // Limpia el valor del campo oculto
+    selectedIconField.value = ''; 
   } else {
-    // Si es un icono diferente, actualiza el campo oculto con el nuevo valor
     selectedIconField.value = selectedIcon;
   }
 
@@ -42,8 +50,3 @@ function selectIcon(radioButton) {
   const selectedLabel = radioButton.closest('.icon-label');
   selectedLabel.classList.add('selected');
 }
-
-
-
-
-
