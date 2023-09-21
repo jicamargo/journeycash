@@ -11,15 +11,16 @@
   </head>
 
   <body>
-    <%= render "common/header", user: @user %>
-      <div class="wrapper">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield %>
-      </div>
-      <%= render "common/footer" %>
-      <%# Navigation menu logic %>
-      <%= javascript_include_tag 'navbar' %>
-    </body>
+    <%= render "shared/header", user: @user %>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+    <%# Navigation menu logic %>
+    <%= javascript_include_tag 'navbar' %>
+
+    <%# add js for groups page %>
+    <%= javascript_include_tag 'groups' %>
+
+  </body>
 
 </html>

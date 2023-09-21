@@ -11,19 +11,35 @@ class GroupsController < ApplicationController
   # GET /groups of current_user
   def index
     @groups = current_user.groups
+    .left_joins(:payments)
+    .select('groups.id, groups.name, groups.icon, SUM(payments.amount) as total_amount')
+    .group('groups.id, groups.name, groups.icon')
+    .order('groups.created_at ASC')
+
+    # replace nil with 0
+    @groups.each do |group|
+      group.total_amount ||= 0
+    end
+    
   end
 
-  # GET /groups/1 or /groups/1.json
+  # select the payments of the group
   def show
+    @group = Group.find(params[:id])
+    @payments = @group.payments
   end
 
   # GET /groups/new
   def new
+    create_icon_names
     @group = Group.new
   end
 
   # GET /groups/1/edit
   def edit
+    create_icon_names
+    @selected_icon = @group.icon
+    @group
   end
 
   # POST /groups or /groups.json
@@ -76,4 +92,11 @@ class GroupsController < ApplicationController
       params.require(:group).permit(:name, :icon, :user_id)
     end
 
+    # Create icon names for select
+    def create_icon_names
+      @icon_names = []
+      Dir.glob("app/assets/images/caticons/*.png").each do |file|
+        @icon_names << File.basename(file, ".png") + ".png"
+      end
+    end
 end

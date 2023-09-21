@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class='container flex-col'>
+  <p style="color: green"><%= notice %></p>
 
-<h1>Groups</h1>
+  <h1>Categories</h1>
 
-<div id="groups">
-  <% @groups.each do |group| %>
-    <%= render group %>
-    <p>
-      <%= link_to "Show this group", group %>
-    </p>
-  <% end %>
+  <div id="groups" class="cnt-scrollable max-height-lg">
+    <% @groups.each do |group| %>
+      <%= render group %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "New Category", new_group_path, class: "format-btn-submit" %>
+  </div>
 </div>
-
-<%= link_to "New group", new_group_path %>

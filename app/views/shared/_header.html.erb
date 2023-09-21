@@ -4,6 +4,15 @@
       <div class="menu-btn-cnt invert-color">
         <%= image_tag("menu-icon.svg", class:'menu-btn') %>
     </ul>
+    <ul class="navbar-ul">
+      <% if user_signed_in? %>
+        <span class="circle-badge text-bg-info">
+          <%= current_user.name.split(' ').map { |word| word[0] }.join.upcase %>
+          's
+        </span>
+      <% end %>
+      <span class="font-logo">Journey Cash</span>
+    </ul>
   </nav>
 </div>
   
@@ -15,11 +24,15 @@
     <%= image_tag("close-icon.svg", class:'menu-btn invert-color') %>
   </div>
   <% if user_signed_in? %>
-    <div class="menu-profile">
-      <%= image_tag("user-icon.svg", class:'menu-img invert-color') %>
-      <%= current_user.name %>
+    <div class='user-info'>
+      <div class="profile-icon">
+        <%= image_tag("user-icon.svg", class:'user-icon invert-color') %>
+      </div>
+      <span class="lbl-username">
+        <%= current_user.name.upcase %>
+      </span>
     </div>
-    <%= link_to '/', :method => :get, class:'navbar-li menu-exit' do %>
+    <%= link_to groups_home_path, :method => :get, class:'navbar-li menu-exit' do %>
       <%= image_tag("home-icon.svg", class:'nav-icon menu-exit') %> Categories
     <% end %>
     <div class="divider"></div>

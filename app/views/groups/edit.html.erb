@@ -1,10 +1,9 @@
-<h1>Editing group</h1>
+<div class='container flex-col data-wrapper'>
+  <h1>Editing category</h1>
 
-<%= render "form", group: @group %>
+  <%= render "form", group: @group %>
 
-<br>
-
-<div>
-  <%= link_to "Show this group", @group %> |
-  <%= link_to "Back to groups", groups_path %>
+  <div>
+    <%= link_to "Back", groups_path %>
+  </div>
 </div>

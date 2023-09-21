@@ -1,5 +1,9 @@
 class PaymentsController < ApplicationController
+  # Devise authentication
+  before_action :authenticate_user!
   before_action :set_payment, only: %i[ show edit update destroy ]
+  before_action :find_group, only: [:new, :create]
+
 
   # GET /payments or /payments.json
   def index
@@ -14,6 +18,8 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @payment = Payment.new
+    @group = Group.find(params[:group_id])
+    @payment.group_id = params[:group_id]
   end
 
   # GET /payments/1/edit
@@ -29,7 +35,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to payment_url(@payment), notice: "Payment was successfully created." }
+        format.html { redirect_to group_path(@payment.group), notice: "Payment was successfully created." }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -63,6 +69,11 @@ class PaymentsController < ApplicationController
   end
 
   private
+
+    def find_group
+      @group = Group.find(params[:group_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
       @payment = Payment.find(params[:id])
