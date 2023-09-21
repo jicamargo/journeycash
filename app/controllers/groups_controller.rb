@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
       .left_joins(:payments)
       .select('groups.id, groups.name, groups.icon, SUM(payments.amount) as total_amount')
       .group('groups.id, groups.name, groups.icon')
-      .order('groups.created_at ASC')
+      .order('groups.created_at')
 
     # replace nil with 0
     @groups.each do |group|
@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
   # select the payments of the group
   def show
     @group = Group.find(params[:id])
-    @payments = @group.payments
+    @payments = @group.payments.order('created_at DESC')
   end
 
   # GET /groups/new

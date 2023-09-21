@@ -663,3 +663,8 @@ body.welcome .logo {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+
+.payment-date {
+  font-size: 0.8rem;
+  color: var(--text-color-light);
+}
