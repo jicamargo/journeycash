@@ -83,8 +83,8 @@ class PaymentsController < ApplicationController
     @labels = current_user.labels.order(:name).to_a
     @label = [] if @labels.blank?
     # add a "create new label" option to the array of labels
-    @labels << {id: '#new*', name: 'Create a new label'}
-  end    
+    @labels << { id: '#new*', name: 'Create a new label' }
+  end
 
   # Only allow a list of trusted parameters through.
   def payment_params
