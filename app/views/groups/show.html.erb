@@ -1,0 +1,41 @@
+<div class='container flex-col'>
+  <div class='payments-group-card max-height-lg'>
+    <h3>Payments for Category</h3>
+    <h2><%= @group.name %></h2>
+    <div class='row group-header'>
+      <div class='icon-cnt'>
+        <%= image_tag "caticons/#{@group.icon}", class: 'category-icon' %>
+      </div>
+
+      <div class="flex-col group-amount">
+        <strong>Total Amount</strong>
+        <strong>
+          <%= number_to_currency(@group.payments.sum(:amount), unit: "$", precision: 2) %>
+        </strong>
+      </div>
+    </div>
+
+
+    <div id="groups" class="cnt-scrollable max-height-md">
+      <% @payments.each do |payment| %>
+        <div class = 'payment-detail row'>
+          <label>
+            <%= payment.label.name %>
+          </label>
+          <label>
+            <%= number_to_currency(payment.amount, unit: "$", precision: 2) %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class= 'welcome-buttons'>
+    <div class="actions">
+      <%= link_to "Add transaction", new_group_payment_path(@group), class: "format-btn-submit"  %>
+    </div>
+    <div class="actions-2">
+      <%= link_to "Back to categories", groups_path, class: "format-btn-submit"  %>
+    </div>
+  </div>
+</div>
