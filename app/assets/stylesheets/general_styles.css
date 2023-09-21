@@ -19,7 +19,6 @@
   --font-logo: 'Norican', cursive, sans-serif;
 }
 
-
 /* --------- Normalization --------- */
 * {
   box-sizing: border-box;
@@ -435,7 +434,6 @@ body.welcome .logo {
   padding: 15px;
   margin: auto;
 }
-
 
 /******* form label ************/
 .label-name {
