@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-    # POST /users or /users.json
+  # POST /users or /users.json
   def create
     @user = User.new(user_params)
     @user.name = params[:user][:name]
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
     puts @user.name
 
     respond_to do |format|
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     @user.name = params[:user][:name]
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
     puts @user.name
     respond_to do |format|
       if @user.update(user_params)

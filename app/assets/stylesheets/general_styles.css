@@ -24,6 +24,7 @@
 * {
   box-sizing: border-box;
   font-family: proxima-nova, sans-serif;
+
   /* -webkit-tap-highlight-color: transparent; */
   padding: 0;
   margin: 0;
@@ -39,9 +40,23 @@ body {
   color: var(--text-color);
 }
 
+.navbar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  top: 0;
+  z-index: 3;
+  height: 4rem;
+  justify-content: center;
+  background-color: var(--main-color);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2), 0 6px 20px rgb(0 0 0 / 30%);
+  border-bottom: 3px solid var(--main-color);
+}
+
 /* splah screen */
 body.welcome .navbar {
-  display: none; 
+  display: none;
 }
 
 .splash-screen {
@@ -65,8 +80,10 @@ body.welcome .navbar {
 }
 
 .welcome-logo {
-  font-size: 3rem;
   color: var(--main-color);
+  transition: all 1.5s ease, transform 1.5s ease;
+  font-size: 3rem;
+  transform: scale(1.2);
 }
 
 .welcome-text {
@@ -86,7 +103,6 @@ body.welcome .navbar {
   padding: 1.2rem;
   border: none;
   outline: none;
-  font-size: 1rem;
   background-color: var(--main-color);
   color: white;
   border-radius: 0.2rem;
@@ -115,46 +131,22 @@ body.welcome .navbar {
 /********************** splash screen animation **********************/
 
 .logo {
-  opacity: 0; 
-  transform: translateY(10px); 
-  transition: all 1.5s ease, transform 1.5s ease;
-}
-
-.welcome-logo {
+  opacity: 0;
+  transform: translateY(10px);
   transition: all 1.5s ease, transform 1.5s ease;
 }
 
 body.welcome {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 body.welcome .logo {
-  opacity: 1; 
-  transform: translateY(0); 
-  font-size: 36px; 
+  opacity: 1;
+  transform: translateY(0);
+  font-size: 36px;
 }
-
-.welcome-logo {
-  font-size: 3rem;
-  transform: scale(1.2); 
-}
-
 
 /* --------- menu --------- */
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  top: 0;
-  z-index: 3;
-  height: 4rem;
-  justify-content: center;
-  background-color: var(--main-color);
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2),  0 6px 20px rgb(0 0 0 / 30%);
-  border-bottom: 3px solid var(--main-color);
-}
 
 .navbar-nav {
   display: flex;
@@ -171,6 +163,7 @@ body.welcome .logo {
   font-size: 1.3rem;
   color: white;
 }
+
 /* background layout to avoid click on the screen while menu is open */
 .overlay {
   position: absolute;
@@ -190,7 +183,6 @@ body.welcome .logo {
 .navbar-menu {
   position: absolute;
   top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   background-color: rgb(0 0 0 / 40%);
@@ -200,7 +192,6 @@ body.welcome .logo {
   height: 100vh;
   align-items: center;
   padding: 2rem 2rem;
-  
   left: -100%;
   justify-content: flex-start;
   transition: all 0.7s ease-in-out;
@@ -208,8 +199,7 @@ body.welcome .logo {
   z-index: 9999;
 }
 
-
-.invert-color{
+.invert-color {
   filter: invert(1);
 }
 
@@ -229,10 +219,6 @@ body.welcome .logo {
 
 .menu-btn-on {
   transform: rotateY(180deg);
-}
-
-.user-icon {
-  height: 1rem;
 }
 
 .navbar-li {
@@ -298,7 +284,7 @@ body.welcome .logo {
 
 .active {
   pointer-events: all;
-  left : 0;
+  left: 0;
 }
 
 /* --------- Footer --------- */
@@ -341,7 +327,7 @@ body.welcome .logo {
 .row {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
 }
@@ -522,11 +508,11 @@ body.welcome .logo {
 
 .width-md {
   width: 40%;
-}  
+}
 
 .width-lg {
   width: 60%;
-}  
+}
 
 /********** styles for categories icons  ***********/
 
@@ -536,12 +522,12 @@ body.welcome .logo {
   border: 1px solid var(--text-color-light);
   flex-wrap: wrap;
   overflow-y: scroll;
-  justify-content: flex-start; 
+  justify-content: flex-start;
 }
 
 .icon-cnt {
   width: 66px;
-  text-align: center; 
+  text-align: center;
 }
 
 .category-icon {
@@ -570,17 +556,17 @@ body.welcome .logo {
 .icon-select label:hover,
 .icon-select label:focus,
 .icon-select input[type="radio"]:checked + label {
-  border-color: #007bff; 
+  border-color: #007bff;
 }
 
 .icon-select input[type="radio"]:checked + label {
-  border-color: #007bff; 
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .icon-label.selected {
-  border-color: #007bff; 
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .group-card {

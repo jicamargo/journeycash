@@ -14,7 +14,6 @@
  *= require_self
  */
 
-  /* add payments.css stylesheet to application.css */
-  @import "general_styles";
-
-  @import "payments";
+/* add payments.css stylesheet to application.css */
+@import "general_styles";
+@import "payments";
