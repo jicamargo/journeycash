@@ -12,10 +12,10 @@
       <div class="icon-select">
         <% @icon_names.map do |i| %>
           <div class="icon-cnt">
-            <label class="icon-label">
+            <div class="icon-label">
               <%= image_tag "caticons/#{i}", class:'category-icon' %>
               <%= form.radio_button :icon, i, class:'icon-option', required: true, onchange: 'selectIcon(this)'  %>
-            </label>
+            </div>
           </div>
         <% end %>
       </div>

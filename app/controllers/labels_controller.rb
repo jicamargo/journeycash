@@ -29,6 +29,8 @@ class LabelsController < ApplicationController
     @label = Label.new(label_params)
     @label.user_id = current_user.id
 
+    authorize! :create, @label
+
     respond_to do |format|
       if @label.save
         format.html { redirect_to label_url(@label), notice: 'label was successfully created.' }
@@ -42,6 +44,8 @@ class LabelsController < ApplicationController
 
   # PATCH/PUT /labels/1 or /labels/1.json
   def update
+    authorize! :update, @label
+
     respond_to do |format|
       if @label.update(label_params)
         format.html { redirect_to label_url(@label), notice: 'label was successfully updated.' }
@@ -55,6 +59,8 @@ class LabelsController < ApplicationController
 
   # DELETE /labels/1 or /labels/1.json
   def destroy
+    authorize! :destroy, @label
+
     @label.destroy
 
     respond_to do |format|
