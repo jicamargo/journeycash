@@ -410,6 +410,8 @@ body.welcome .logo {
 
 .actions-2 {
   width: 100%;
+  max-width: 400px;
+  margin: auto;
   padding: 0.5rem;
   border: none;
   outline: none;
@@ -436,14 +438,24 @@ body.welcome .logo {
 }
 
 /******* form label ************/
+.label-cnt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
 .label-name {
-  font-size: 1.2rem;
   width: 60%;
-  font-weight: 600;
   color: var(--text-color);
 }
 
 .label-actions {
+  text-align: center;
   font-size: 1rem;
   width: 30%;
   font-weight: 600;

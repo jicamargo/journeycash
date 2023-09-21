@@ -33,11 +33,7 @@
       </span>
     </div>
     <%= link_to groups_home_path, :method => :get, class:'navbar-li menu-exit' do %>
-      <%= image_tag("home-icon.svg", class:'nav-icon menu-exit') %> Categories
-    <% end %>
-    <div class="divider"></div>
-    <%= link_to new_payment_path(current_user.id), class:'navbar-li' do %>
-      <%= image_tag("add-payment-icon.svg", class:'nav-icon') %> Add payment
+      <%= image_tag("groups-icon.svg", class:'nav-icon menu-exit') %> Categories
     <% end %>
     <div class="divider"></div>
     <%= link_to new_group_path(current_user.id), class:'navbar-li' do %>
