@@ -1,0 +1,13 @@
+<div class='container flex-col'>
+  <h1>Categories</h1>
+
+  <div id="groups" class="cnt-scrollable max-height-md">
+    <% @groups.each do |group| %>
+      <%= render group %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "New Category", new_group_path, class: "format-btn-submit" %>
+  </div>
+</div>

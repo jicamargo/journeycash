@@ -1,0 +1,18 @@
+<div id="<%= dom_id group %>">
+  <a href="<%= group_path(group) %>">
+    <div class='row border group-card'>
+      <div class='icon-cnt'>
+        <%= image_tag "caticons/#{group.icon}", class: 'category-icon' %>
+      </div>
+        <strong>
+          <%= group.name %>
+        </strong>
+      </p>
+
+      <div class="flex-col group-amount">
+        <strong>Total</strong>
+        <%= number_to_currency(group.total_amount, unit: "$", precision: 2) %>
+      </div>
+    </div>
+  </a>
+</div>

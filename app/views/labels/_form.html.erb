@@ -1,0 +1,19 @@
+<%= form_with(model: label, class: "form-data") do |form| %>
+  <div "data-section">
+    <div class="form-field-cnt">
+      <%= form.label :name, class:'form-field-label width-sm' %>
+      <%= form.text_field :name, class: 'form-field-input', autofocus: true %>
+    </div>
+  </div>
+
+  <% if label.errors.any? %>
+    <div class='center' style="color: red">
+      <h3>Category could not be saved, enter a Name and select an Icon</h3>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Save changes", class: "format-btn-submit" %>
+  </div>
+
+<% end %>

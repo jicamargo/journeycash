@@ -1,0 +1,41 @@
+<%= form_with(model: payment, class: "form-data", url: groups_path) do |form| %>
+  <div "data-section">
+    <% if payment.errors.any? %>
+      <div style="color: red">
+        <h2>Payment could not be saved, please fill in all fields</h2>
+        <ul>
+          <% payment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+      </div>
+    <% end %>
+
+    <div  class="form-field-cnt">
+      <%= form.label "Group" %>
+      <%= form.select :group_id, options_for_select(Group.order(:name).pluck(:name, :id), 
+            payment.group_id), { include_blank: 'Select a Group' },
+            { class: 'form-field-input' } %>
+    </div>
+
+    <div class="form-field-cnt">
+      <%= form.label "Label" %>
+      <%= form.select :label_id, options_for_select(Label.order(:name).pluck(:name, :id),
+          payment.label_id), { include_blank: 'Select a label' },
+          { data: { new_option: true }, id: 'label_id_select', class: 'form-field-input' } %>  
+    </div>
+
+    <div id='new_label' class="form-field-cnt" style="display: none" >
+      <%= form.label :new_label, 'New label', class:'form-field-label width-sm' %>
+      <%= form.text_field :new_label, class: 'form-field-input'  %>
+    </div>
+
+    <div class='form-field-cnt'>
+      <%= form.label "Amount", style: "display: block", class:'form-field-label width-sm' %>
+      <%= form.text_field :amount, input_html: { type: "number" }, class: "currency-input form-field-input"  %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save transaction", class: "format-btn-submit" %>
+  </div>
+<% end %>

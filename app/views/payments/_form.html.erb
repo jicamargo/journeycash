@@ -1,0 +1,42 @@
+<%= form_with(model: payment, url: group_payments_path(@group), class: "form-data", local: true) do |form| %>
+
+  <div "data-section">
+
+    <h3 class='center'>for Category</h3>
+    <div class='row container center '>
+      <div class='icon-cnt'>
+        <%= image_tag "caticons/#{@group.icon}", class: 'category-icon' %>
+      </div>
+      <strong>
+        <%= @group.name %>
+      </strong>
+      <%= form.hidden_field :group_id, value: @group.id %>
+    </div>
+
+    <div class="form-field-cnt">
+      <p>Label</p>
+      <%= form.select :label_id, options_for_select(@labels.pluck(:name, :id),
+          payment.label_id), { include_blank: 'Select a label' },
+          { data: { new_option: true }, id: 'label_id_select', class: 'form-field-input' } %>  
+    </div>
+
+    <div id='new_label' class="form-field-cnt" >
+      <%= form.label :new_label, 'New label', class:'form-field-label width-sm' %>
+      <%= form.text_field :new_label, class: 'form-field-input'  %>
+    </div>
+
+    <div class='form-field-cnt'>
+      <%= form.label :amount, "Amount", style: "display: block", class:'form-field-label width-sm' %>
+      <%= form.text_field :amount, input_html: { type: "number" }, class: "currency-input form-field-input"  %>
+    </div>
+  </div>
+
+  <% if payment.errors.any? %>
+    <div class='center' style="color: red">
+      <strong>Payment could not be saved, please fill in all fields</strong>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= form.submit "Save transaction", class: "format-btn-submit" %>
+  </div>
+<% end %>

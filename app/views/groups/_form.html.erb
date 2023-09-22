@@ -1,0 +1,36 @@
+<%= form_with(model: group,   url: groups_path(@group), class: "form-data", local: true) do |form| %>
+  <div "data-section">
+    <div class="form-field-cnt">
+      <%= form.label "Name:", class:'form-field-label width-sm' %>
+      <%= form.text_field :name, placeholder: "Category's name", class: 'form-field-input', autofocus: true %>
+    </div>
+    
+    <div class="form-field-cnt">
+      <%= form.label "Icon:", class: 'form-field-label width-sm' %>
+      <%= form.hidden_field :icon, id: 'selected-icon', value: '' %>
+
+      <div class="icon-select">
+        <% @icon_names.map do |i| %>
+          <div class="icon-cnt">
+            <div class="icon-label">
+              <%= form.radio_button :icon, i, class: 'icon-option', required: true, onchange: 'selectIcon(this)' %>
+              <%= label_tag "icon_#{i}" do %>
+                <%= image_tag "caticons/#{i}", class: 'category-icon' %>
+              <% end %>
+            </div>          
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% if group.errors.any? %>
+    <div class='center' style="color: red">
+      <h3>Category could not be saved, enter a Name and select an Icon</h3>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Save changes", class: "format-btn-submit" %>
+  </div>
+<% end %>
