@@ -10,6 +10,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [📽️ Video presentation](#video-demo)
 - [💻 Getting Started](#getting-started)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
@@ -54,7 +55,17 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- [Live Demo Link](https://ourneycash-eak3.onrender.com/)
+- [Live Demo Link](https://journeycash.onrender.com)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- VIDEO DEMO  -->
+
+## 📽️ Video presentation <a name="video-demo"></a>
+
+
+- [Video presentacion](https://www.loom.com/share/d157134b56eb42c9bbc5fc99037a19f1?sid=cc504106-8b39-4552-b553-643b4431461bhttps://ourneycash-eak3.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
