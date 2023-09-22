@@ -84,6 +84,9 @@ test:
 #
 production:
   <<: *default
-  database: journeycash_production
-  username: journeycash
-  password: <%= ENV["JOURNEYCASH_DATABASE_PASSWORD"] %>
+  adapter: "postgresql"
+  encoding: "unicode"
+  url: <%= ENV["DATABASE_URL"] %>
+  database: journeycash
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
