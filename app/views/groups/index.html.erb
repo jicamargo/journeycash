@@ -1,9 +1,7 @@
 <div class='container flex-col'>
-  <p style="color: green"><%= notice %></p>
-
   <h1>Categories</h1>
 
-  <div id="groups" class="cnt-scrollable max-height-lg">
+  <div id="groups" class="cnt-scrollable max-height-md">
     <% @groups.each do |group| %>
       <%= render group %>
     <% end %>
